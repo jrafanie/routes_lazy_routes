@@ -4,7 +4,8 @@ module RoutesLazyRoutes
   class RoutesReloaderWrapper
     delegate :paths,
              :eager_load=,
-             :run_after_load_paths=,
+             :run_after_load_paths=,         # Rails <= 8.1.3.1
+             :run_once_after_load_paths=,    # Rails >= 8.1.4
              :loaded=,                       # Rails >= 8.0
              :updated?,
              :route_sets,
