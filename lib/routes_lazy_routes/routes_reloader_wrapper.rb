@@ -5,6 +5,7 @@ module RoutesLazyRoutes
     delegate :paths,
              :eager_load=,
              :run_after_load_paths=,
+             :loaded=,                       # Rails >= 8.0
              :updated?,
              :route_sets,
              :external_routes,
@@ -17,6 +18,10 @@ module RoutesLazyRoutes
 
     def execute
       # pretty vacant
+    end
+
+    def execute_unless_loaded
+      # no-op like execute: added in Rails 8.0 as a second route-loading entry point
     end
 
     def reload!
